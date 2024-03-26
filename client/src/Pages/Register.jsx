@@ -24,7 +24,7 @@ const Register = () => {
 
   const registerUser = ()=>{
     
-    axios.post('http://18.212.122.254:5000/register',{username,password,email,phone,address,purchase})
+    axios.post('http://18.215.242.74:5000/register',{username,password,email,phone,address,purchase})
     .then(() =>{
       navigate('/')
     } )
