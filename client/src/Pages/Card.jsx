@@ -28,7 +28,7 @@ const Card = ({ artwork }) => {
     e.preventDefault();
     setCart(cart+1);
     try{
-      const updateCart = await axios.put(`http://18.212.122.254:5000/cart/${username}/update`, {
+      const updateCart = await axios.put(`http://18.215.242.74:5000/cart/${username}/update`, {
         cart: artwork._id,
       });
       console.log(updateCart.data)
@@ -45,7 +45,7 @@ const Card = ({ artwork }) => {
 
     try {
       
-      const response = await axios.put(`http://18.212.122.254:5000/api/artworks/${artwork._id}/comments`, {
+      const response = await axios.put(`http://18.215.242.74:5000/api/artworks/${artwork._id}/comments`, {
         comment: comment,
       });
       setComment('')
@@ -62,7 +62,7 @@ const Card = ({ artwork }) => {
   const updateCartQuantity = async(artworkId, update) =>{
     console.log(artworkId,update)
     try{
-      const response = await axios.put(`http://18.212.122.254:5000/cart/${username}/update-quantity`, {artworkId:artworkId,update:update});
+      const response = await axios.put(`http://18.215.242.74:5000/cart/${username}/update-quantity`, {artworkId:artworkId,update:update});
       if(update==='add'){
         setCart(cart+1)
       }else{
@@ -78,7 +78,7 @@ const Card = ({ artwork }) => {
   return (
     <div style={{ border: '1px solid #ddd', padding: '30px', margin: '10px', width: '300px',backgroundColor:'gainsboro',borderRadius:'20px',cursor:'pointer'}}>
       
-      <img src={`http://18.212.122.254:5000/${artwork.imagePath.replace(/\\/g, '/')}`} alt={artwork.title} style={{ width: '100%', height: '350px', objectFit: 'cover' }} />
+      <img src={`http://18.215.242.74:5000/${artwork.imagePath.replace(/\\/g, '/')}`} alt={artwork.title} style={{ width: '100%', height: '350px', objectFit: 'cover' }} />
       <h3>{artwork.title}</h3>
       <p>Artist: {artwork.artist}</p>
       <p>Description: {artwork.description}</p>
