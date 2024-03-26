@@ -10,7 +10,7 @@ const UserProfile = () => {
   useEffect(()=>{
     const fetchData = async () =>{
       try{
-        const response = await axios.get('http://18.212.122.254:5000/fetch-user',{params:{id:_id}})
+        const response = await axios.get('http://18.215.242.74:5000/fetch-user',{params:{id:_id}})
         console.log(response)
         setUser(response.data.user)
       }catch(err){
