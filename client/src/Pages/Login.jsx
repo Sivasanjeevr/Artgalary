@@ -17,7 +17,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://18.212.122.254:5000/login', { username, password });
+      const response = await axios.post('http://18.215.242.74:5000/login', { username, password });
 
       if (response?.data?.status === 'success' && response?.data?.user) {
         const user = response.data.user;
