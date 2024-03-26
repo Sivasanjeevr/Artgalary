@@ -27,7 +27,7 @@ const ArtworkForm = () => {
 
     try {
       
-      const response = await axios.post('http://18.212.122.254/api/artworks', formData);
+      const response = await axios.post('http://18.215.242.74/api/artworks', formData);
 
       console.log('Artwork added successfully:', response.data);
       navigate('/');     
