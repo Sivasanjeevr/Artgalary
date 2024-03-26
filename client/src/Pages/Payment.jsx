@@ -15,7 +15,7 @@ const Payment = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get(`http://18.212.122.254:5000/fetch-user?id=${_id}`)
+    axios.get(`http://18.215.242.744:5000/fetch-user?id=${_id}`)
       .then(response => {
         setArtworks(response.data.user.cart);
       })
@@ -25,7 +25,7 @@ const Payment = () => {
   }, [_id]);
 
   useEffect(() => {
-    axios.get('http://18.212.122.254:5000/total-price', { params: { final } })
+    axios.get('http://18.215.242.744:5000/total-price', { params: { final } })
       .then(result => {
         setTotal(result.data.total);
         setArtDetails(result.data.arr);
@@ -60,7 +60,7 @@ const Payment = () => {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const verifyUrl = "http://18.212.122.254:5000/verify";
+          const verifyUrl = "http://18.215.242.744:5000/verify";
           const { data } = await axios.post(verifyUrl, response);
           if (data.message === 'Payment verified successfully') {
             console.log("Payment verified")
@@ -68,7 +68,7 @@ const Payment = () => {
             setArtDetails([])
             setTotal(0)
             
-            const clear = await axios.delete(`http://18.212.122.254:5000/${username}/delete-cart`)
+            const clear = await axios.delete(`http://18.215.242.744:5000/${username}/delete-cart`)
             console.log(clear)
           }
         } catch (error) {
@@ -90,7 +90,7 @@ const Payment = () => {
       return;
     }
     try {
-      const orderUrl = "http://18.212.122.254:5000/orders";
+      const orderUrl = "http://18.215.242.744:5000/orders";
       const { data } = await axios.post(orderUrl, { amount: total });
       console.log(data);
       initPayment(data.data);
@@ -102,7 +102,7 @@ const Payment = () => {
 
   const updateCartQuantity = async (artworkId, update) => {
     try {
-      const response = await axios.put(`http://18.212.122.254:5000/cart/${username}/update-quantity`, { artworkId: artworkId, update: update });
+      const response = await axios.put(`http://18.215.242.744:5000/cart/${username}/update-quantity`, { artworkId: artworkId, update: update });
       setArtworks(response.data.user.cart);
       if (response.data.user.cart.length === 0) {
         setArtDetails([])
@@ -136,7 +136,7 @@ const Payment = () => {
       <div className={PaymentCss.gridContainer}>
         {artDetails && artDetails.length > 0 ? artDetails.map(art => (
           <div key={art._id} className={`${PaymentCss.card} ${PaymentCss.gridItem}`} >
-            <img src={`http://18.212.122.254:5000/${art.image.replace(/\\/g, '/')}`} alt="" style={{ width: '250px', height: '400px' }} />
+            <img src={`http://18.215.242.744:5000/${art.image.replace(/\\/g, '/')}`} alt="" style={{ width: '250px', height: '400px' }} />
 
             <p>Product Name: {art.title}</p>
             <div>
