@@ -15,7 +15,7 @@ const Dashboard = () => {
   
 
   useEffect(() => {
-    axios.get('http://18.215.242.74:5000/artwork-dashboard')
+    axios.get('http://localhost:5000/artwork-dashboard')
       .then(result => {
         
         setArtwork(result.data.artwork);
